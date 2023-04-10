@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSnapshot } from 'valtio';
+
 import config from '../config/config';
 import state from '../store';
 import { download } from '../assets';
@@ -9,11 +10,9 @@ import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
 
-
-
 const Customizer = () => {
   const snap = useSnapshot(state);
-  
+
   const [file, setFile] = useState('');
 
   const [prompt, setPrompt] = useState('');
@@ -55,18 +54,18 @@ const Customizer = () => {
       setGeneratingImg(true);
 
       const response = await fetch('http://localhost:8080/api/v1/dalle', {
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        body:JSON.stringify({
-          prompt:prompt.toString(),
+        body: JSON.stringify({
+          prompt,
         })
       })
 
       const data = await response.json();
-      
-      handleDecals(type,`data:image/png;base64,${data.photo}`)
+
+      handleDecals(type, `data:image/png;base64,${data.photo}`)
     } catch (error) {
       alert(error)
     } finally {
