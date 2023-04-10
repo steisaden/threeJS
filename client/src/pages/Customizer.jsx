@@ -53,7 +53,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-      const response = await fetch(process.env.VITE_PUBLIC_API_KEY, {
+      const response = await fetch(process.env.REACT_APP_VITE_PUBLIC_API_KEY, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
