@@ -17,5 +17,5 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: "Hello from DALL.E" })
 })
 
-const PORT = '0.0.0.0'
+const PORT = process.env.REACT_APP_PORT
 app.listen(PORT, () => console.log('Server has started on port 8080'))
