@@ -18,4 +18,4 @@ app.get('/', (req, res) => {
 })
 
 const PORT = process.env.REACT_APP_PORT
-app.listen(PORT || 8080, () => console.log('Server has started on port 8080'))
+app.listen(PORT, () => console.log('Server has started on port 8080'))
