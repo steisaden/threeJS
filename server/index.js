@@ -13,7 +13,9 @@ app.use(express.json({ limit: "50mb" }))
 app.use("/api/v1/dalle", dalleRoutes);
 
 app.get('/', (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true")
   res.status(200).json({ message: "Hello from DALL.E" })
 })
 
-app.listen(process.env.REACT_APP_PORT || 8080, () => console.log('Server has started on port 8080'))
+const PORT = process.env.REACT_APP_PORT
+app.listen(PORT || 8080, () => console.log('Server has started on port 8080'))
